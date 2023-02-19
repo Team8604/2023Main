@@ -16,8 +16,32 @@ public final class Constants {
 
     // CAN IDs
     public static final int kPCM = 0;
+    public static final int kLeftLeader = 1;
+    public static final int kLeftFollower = 2;
+    public static final int kRightLeader = 3;
+    public static final int kRightFollower = 4;
 
     // Solenoid values
     public static final int kGrabberForward = 0;
     public static final int kGrabberReverse = 0;
+
+    // Controller bindings
+    public static final int kButtonA = 1;
+    public static final int kButtonB = 2;
+    public static final int kButtonX = 3;
+    public static final int kButtonY = 4;
+    public static final int kBumperL = 5;
+    public static final int kBumperR = 6;
+
+    public static final int kLeftStickX = 0;
+    public static final int kLeftStickY = 1;
+    public static final int kRightStickX = 4;
+    public static final int kRightStickY = 5;
+    public static final int kLeftTriggerY = 2;
+    public static final int kRightTriggerY = 3;
+
+    public static final int kButton1 = 1;
+    public static final int kButton2 = 2;
+    public static final int kButton3 = 3;
+    public static final int kButton4 = 4;
 }

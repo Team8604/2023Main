@@ -5,26 +5,30 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants;
+import frc.robot.RobotContainer;
 
 public class DriveArcade extends CommandBase {
-  /** Creates a new DriveArcade. */
+
   public DriveArcade() {
-    // Use addRequirements() here to declare subsystem dependencies.
+    addRequirements(RobotContainer.m_drivetrain);
   }
 
-  // Called when the command is initially scheduled.
   @Override
   public void initialize() {}
 
-  // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() {
+    double drive = RobotContainer.driver.getRawAxis(Constants.kLeftStickY);
+    double rotate = RobotContainer.driver.getRawAxis(Constants.kLeftStickX);
+    RobotContainer.driver.getRawButton(Constants.kButtonA);
 
-  // Called once the command ends or is interrupted.
+    RobotContainer.m_drivetrain.set(drive, rotate);
+  }
+
   @Override
   public void end(boolean interrupted) {}
 
-  // Returns true when the command should end.
   @Override
   public boolean isFinished() {
     return false;
