@@ -51,6 +51,10 @@ public final class Constants {
     public static final int kButton3 = 3;
     public static final int kButton4 = 4;
 
+    // Control multipliers
+    public static final double kDriveMultiplier = 0.5;
+    public static final double kSteerMultiplier = 0.5;
+
     // Motor limits
     // Values copied from 2021 code
     public static final double kCurrentLimitPeak = 45;

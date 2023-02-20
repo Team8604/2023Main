@@ -20,10 +20,14 @@ public class DriveArcade extends CommandBase {
   @Override
   public void execute() {
     double drive = RobotContainer.driver.getRawAxis(Constants.kLeftStickY);
-    double rotate = RobotContainer.driver.getRawAxis(Constants.kLeftStickX);
-    RobotContainer.driver.getRawButton(Constants.kButtonA);
+    double steer = RobotContainer.driver.getRawAxis(Constants.kLeftStickX);
 
-    RobotContainer.m_drivetrain.set(drive, rotate);
+    if(!RobotContainer.driver.getRawButton(Constants.kButtonA)) {
+      drive *= Constants.kDriveMultiplier;
+      steer *= Constants.kSteerMultiplier;
+    }
+
+    RobotContainer.m_drivetrain.set(drive, steer);
   }
 
   @Override
