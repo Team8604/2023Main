@@ -4,6 +4,8 @@
 
 package frc.robot;
 
+import com.ctre.phoenix.motorcontrol.StatorCurrentLimitConfiguration;
+
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
  * constants. This class should not be used for any other purpose. All constants should be declared
@@ -20,10 +22,14 @@ public final class Constants {
     public static final int kLeftFollower = 2;
     public static final int kRightLeader = 3;
     public static final int kRightFollower = 4;
+    public static final int kArm1 = 5;
+    public static final int kArm2 = 6;
 
     // Solenoid values
     public static final int kGrabberForward = 0;
-    public static final int kGrabberReverse = 0;
+    public static final int kGrabberReverse = 1;
+    public static final int kElevatorForward = 2;
+    public static final int kElevatorReverse = 3;
 
     // Controller bindings
     public static final int kButtonA = 1;
@@ -44,4 +50,19 @@ public final class Constants {
     public static final int kButton2 = 2;
     public static final int kButton3 = 3;
     public static final int kButton4 = 4;
+
+    // Motor limits
+    // Values copied from 2021 code
+    public static final double kCurrentLimitPeak = 45;
+    public static final double kCurrentLimitContinuous = 40;
+    public static final double kCurrentLimitTime = 0.4;
+    public static final StatorCurrentLimitConfiguration kCurrentLimitConfig = new StatorCurrentLimitConfiguration(true, Constants.kCurrentLimitContinuous,
+        Constants.kCurrentLimitPeak, Constants.kCurrentLimitTime); 
+
+    // PID settings
+    public static final int kTimeoutMs = 0;
+    public static final double kArmP = 0.5;
+    public static final double kArmI = 0;
+    public static final double kArmD = 0;
+    public static final double kArmF = 0;
 }
