@@ -4,8 +4,10 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
@@ -23,8 +25,10 @@ public class RobotContainer {
   public static Grabber grabber = new Grabber();
   public static Arm arm = new Arm();
 
+  public static Compressor compressor = new Compressor(Constants.kPCM, PneumaticsModuleType.CTREPCM);
+
   public static Joystick driver = new Joystick(0);
-  public static Joystick operator = new Joystick(1);
+  // public static Joystick operator = new Jodystick(1);
 
   public static JoystickButton driverAButton = new JoystickButton(driver, Constants.kButtonA);
   public static JoystickButton driverBButton = new JoystickButton(driver, Constants.kButtonB);
@@ -32,6 +36,8 @@ public class RobotContainer {
   public static JoystickButton driverYButton = new JoystickButton(driver, Constants.kButtonY);
 
   public RobotContainer() {
+    compressor.enableDigital();
+
     configureButtonBindings();
   }
 
