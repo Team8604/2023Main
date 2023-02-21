@@ -11,7 +11,7 @@ import frc.robot.RobotContainer;
 public class DriveArcade extends CommandBase {
 
   public DriveArcade() {
-    addRequirements(RobotContainer.m_drivetrain);
+    addRequirements(RobotContainer.drivetrain);
   }
 
   @Override
@@ -27,7 +27,7 @@ public class DriveArcade extends CommandBase {
       steer *= Constants.kSteerMultiplier;
     }
 
-    RobotContainer.m_drivetrain.set(drive, steer);
+    RobotContainer.drivetrain.set(drive, steer);
   }
 
   @Override

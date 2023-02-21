@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
-
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.subsystems.*;
 import frc.robot.commands.*;
 
@@ -19,11 +19,17 @@ import frc.robot.commands.*;
  * subsystems, commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
-  public static final Drivetrain m_drivetrain = new Drivetrain();
-  public static final Grabber m_grabber = new Grabber();
+  public static Drivetrain drivetrain = new Drivetrain();
+  public static Grabber grabber = new Grabber();
+  public static Arm arm = new Arm();
 
   public static Joystick driver = new Joystick(0);
   public static Joystick operator = new Joystick(1);
+
+  public static JoystickButton driverAButton = new JoystickButton(driver, Constants.kButtonA);
+  public static JoystickButton driverBButton = new JoystickButton(driver, Constants.kButtonB);
+  public static JoystickButton driverXButton = new JoystickButton(driver, Constants.kButtonX);
+  public static JoystickButton driverYButton = new JoystickButton(driver, Constants.kButtonY);
 
   public RobotContainer() {
     configureButtonBindings();
@@ -35,7 +41,12 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing it to a {@link
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
-  private void configureButtonBindings() {}
+  private void configureButtonBindings() {
+    driverAButton.onTrue(new TestPneumatic(true, false));
+    driverAButton.onFalse(new TestPneumatic(false, false));
+    driverBButton.onTrue(new TestPneumatic(true, true));
+    driverBButton.onFalse(new TestPneumatic(false, true));
+  }
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
