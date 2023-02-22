@@ -4,14 +4,18 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.TalonFXFeedbackDevice;
+import com.ctre.phoenix.motorcontrol.TalonFXInvertType;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
+import edu.wpi.first.wpilibj.motorcontrol.Talon;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+import frc.robot.RobotContainer;
 
 public class Arm extends SubsystemBase {
 
@@ -30,6 +34,7 @@ public class Arm extends SubsystemBase {
     armMotor2.follow(armMotor1);
     armMotor2.configStatorCurrentLimit(Constants.kCurrentLimitConfig);
     armMotor2.setNeutralMode(NeutralMode.Brake);
+    armMotor2.setInverted(TalonFXInvertType.OpposeMaster);
 
     armMotor1.configFactoryDefault();
     armMotor1.configSelectedFeedbackSensor(TalonFXFeedbackDevice.IntegratedSensor, 0, Constants.kTimeoutMs);
@@ -48,5 +53,10 @@ public class Arm extends SubsystemBase {
     // commands simply set the target
     // This is done to reduce the change of a controls 
     // miscommunication causing the robot to damage itself 
+
+
+    double axis = RobotContainer.driver.getRawAxis(Constants.kRightStickY);
+    if(axis < 0.1 && axis > -0.1) axis = 0;
+    armMotor1.set(ControlMode.PercentOutput, axis * 0.1);
   }
 }

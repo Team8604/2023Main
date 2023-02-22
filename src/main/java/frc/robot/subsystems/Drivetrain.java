@@ -39,8 +39,6 @@ public class Drivetrain extends SubsystemBase {
     rightMotors = new MotorControllerGroup(rightLeader, rightFollower);
 
     differentialDrive = new DifferentialDrive(leftMotors, rightMotors);
-
-    setDefaultCommand(new DriveArcade());
   }
 
   public void set(double forward, double steer) {

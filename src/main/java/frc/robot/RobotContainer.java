@@ -38,6 +38,8 @@ public class RobotContainer {
   public RobotContainer() {
     compressor.enableDigital();
 
+    drivetrain.setDefaultCommand(new DriveArcade());
+
     configureButtonBindings();
   }
 

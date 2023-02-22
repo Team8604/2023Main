@@ -17,19 +17,19 @@ import com.ctre.phoenix.motorcontrol.StatorCurrentLimitConfiguration;
 public final class Constants {
 
     // CAN IDs
-    public static final int kPCM = 0;
-    public static final int kLeftLeader = 1;
-    public static final int kLeftFollower = 2;
-    public static final int kRightLeader = 3;
-    public static final int kRightFollower = 4;
-    public static final int kArm1 = 5;
-    public static final int kArm2 = 6;
+    public static final int kPCM = 1;
+    public static final int kLeftLeader = 4;
+    public static final int kLeftFollower = 5;
+    public static final int kRightLeader = 2;
+    public static final int kRightFollower = 3;
+    public static final int kArm1 = 6;
+    public static final int kArm2 = 7;
 
     // Solenoid values
-    public static final int kGrabberForward = 0;
-    public static final int kGrabberReverse = 1;
-    public static final int kElevatorForward = 2;
-    public static final int kElevatorReverse = 3;
+    public static final int kGrabberForward = 4;
+    public static final int kGrabberReverse = 7;
+    public static final int kElevatorForward = 6;
+    public static final int kElevatorReverse = 5;
 
     // Controller bindings
     public static final int kButtonA = 1;
