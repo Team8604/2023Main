@@ -28,10 +28,10 @@ public class RobotContainer {
   public static Compressor compressor = new Compressor(Constants.kPCM, PneumaticsModuleType.CTREPCM);
 
   public static Joystick driver = new Joystick(0);
-  // public static Joystick operator = new Jodystick(1);
+  public static Joystick operator = new Joystick(1);
 
-  public static JoystickButton driverAButton = new JoystickButton(driver, Constants.kButtonA);
-  public static JoystickButton driverBButton = new JoystickButton(driver, Constants.kButtonB);
+  public static JoystickButton operatorAButton = new JoystickButton(operator, Constants.kButtonA);
+  public static JoystickButton operatorBButton = new JoystickButton(operator, Constants.kButtonB);
   public static JoystickButton driverXButton = new JoystickButton(driver, Constants.kButtonX);
   public static JoystickButton driverYButton = new JoystickButton(driver, Constants.kButtonY);
 
@@ -50,10 +50,10 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    driverAButton.onTrue(new TestPneumatic(true, false));
-    driverAButton.onFalse(new TestPneumatic(false, false));
-    driverBButton.onTrue(new TestPneumatic(false, true));
-    driverBButton.onFalse(new TestPneumatic(true, true));
+    operatorAButton.onTrue(new TestPneumatic(true, false));
+    operatorAButton.onFalse(new TestPneumatic(false, false));
+    operatorBButton.onTrue(new TestPneumatic(false, true));
+    operatorBButton.onFalse(new TestPneumatic(true, true));
   }
 
   /**
