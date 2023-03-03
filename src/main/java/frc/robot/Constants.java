@@ -54,6 +54,7 @@ public final class Constants {
     // Control multipliers
     public static final double kDriveMultiplier = 0.5;
     public static final double kSteerMultiplier = 0.5;
+    public static final double kArmMultiplier = -0.2;
 
     // Motor limits
     // Values copied from 2021 code
