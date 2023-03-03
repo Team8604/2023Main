@@ -52,8 +52,8 @@ public class RobotContainer {
   private void configureButtonBindings() {
     driverAButton.onTrue(new TestPneumatic(true, false));
     driverAButton.onFalse(new TestPneumatic(false, false));
-    driverBButton.onTrue(new TestPneumatic(true, true));
-    driverBButton.onFalse(new TestPneumatic(false, true));
+    driverBButton.onTrue(new TestPneumatic(false, true));
+    driverBButton.onFalse(new TestPneumatic(true, true));
   }
 
   /**
