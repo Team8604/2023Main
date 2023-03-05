@@ -21,14 +21,24 @@ public class DriveTime extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    // RobotContainer.arm.solenoid.set(Value.kReverse);
-    // RobotContainer.grabber.set(false);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    RobotContainer.drivetrain.set(0.5, 0);
+    if(timer.hasElapsed(4)) {
+      RobotContainer.drivetrain.set(.5, 0);
+      return;
+    }
+    if(timer.hasElapsed(1.5)) {
+      RobotContainer.drivetrain.set(-0.4, 0);
+      return;
+    }
+    if(timer.hasElapsed(.5)) {
+      RobotContainer.drivetrain.set(.5, 0);
+      return;
+    }
+    RobotContainer.drivetrain.set(-.75, 0);
   }
 
   // Called once the command ends or is interrupted.
@@ -40,6 +50,6 @@ public class DriveTime extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return timer.hasElapsed(5);
+    return timer.hasElapsed(8);
   }
 }
