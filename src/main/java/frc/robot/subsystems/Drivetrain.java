@@ -42,7 +42,7 @@ public class Drivetrain extends SubsystemBase {
   }
 
   public void set(double forward, double steer) {
-    differentialDrive.arcadeDrive(forward, steer);
+    differentialDrive.arcadeDrive(steer, forward);
   }
 
   @Override

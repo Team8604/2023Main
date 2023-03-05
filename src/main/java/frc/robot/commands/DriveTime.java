@@ -5,6 +5,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 
@@ -12,19 +13,22 @@ public class DriveTime extends CommandBase {
   private Timer timer;
   /** Creates a new DriveTime. */
   public DriveTime() {
-    addRequirements(RobotContainer.drivetrain);
+    addRequirements(RobotContainer.drivetrain, RobotContainer.arm, RobotContainer.grabber);
     timer = new Timer();
     timer.start();  
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    // RobotContainer.arm.solenoid.set(Value.kReverse);
+    // RobotContainer.grabber.set(false);
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    RobotContainer.drivetrain.set(0.2, 0);
+    RobotContainer.drivetrain.set(0.5, 0);
   }
 
   // Called once the command ends or is interrupted.

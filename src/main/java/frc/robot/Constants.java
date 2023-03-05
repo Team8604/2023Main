@@ -26,8 +26,8 @@ public final class Constants {
     public static final int kArm2 = 7;
 
     // Solenoid values
-    public static final int kGrabberForward = 4;
-    public static final int kGrabberReverse = 7;
+    public static final int kGrabberForward = 7;
+    public static final int kGrabberReverse = 4;
     public static final int kElevatorForward = 6;
     public static final int kElevatorReverse = 5;
 
@@ -52,8 +52,8 @@ public final class Constants {
     public static final int kButton4 = 4;
 
     // Control multipliers
-    public static final double kDriveMultiplier = 0.5;
-    public static final double kSteerMultiplier = 0.5;
+    public static final double kDriveMultiplier = 0.7;
+    public static final double kSteerMultiplier = 0.7;
     public static final double kArmMultiplier = -0.2;
 
     // Motor limits

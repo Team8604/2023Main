@@ -55,7 +55,7 @@ public class Arm extends SubsystemBase {
     // miscommunication causing the robot to damage itself 
 
 
-    double axis = RobotContainer.driver.getRawAxis(Constants.kRightStickY);
+    double axis = RobotContainer.operator.getRawAxis(Constants.kLeftStickY);
     if(axis < 0.1 && axis > -0.1) axis = 0;
     armMotor1.set(ControlMode.PercentOutput, axis * axis * Math.signum(axis) * Constants.kArmMultiplier);
   }
