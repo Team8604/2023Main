@@ -36,7 +36,7 @@ public class RobotContainer {
   public static JoystickButton driverYButton = new JoystickButton(driver, Constants.kButtonY);
 
   public RobotContainer() {
-    // compressor.enableDigital();
+    compressor.disable();
 
     drivetrain.setDefaultCommand(new DriveArcade());
 
