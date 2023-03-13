@@ -57,6 +57,7 @@ public class Arm extends SubsystemBase {
 
     double axis = RobotContainer.driver.getRawAxis(Constants.kRightStickY);
     if(axis < 0.1 && axis > -0.1) axis = 0;
-    armMotor1.set(ControlMode.PercentOutput, axis * axis * Math.signum(axis) * Constants.kArmMultiplier);
+    // armMotor1.set(ControlMode.PercentOutput, axis * axis * Math.signum(axis) * Constants.kArmMultiplier);
+    armMotor1.set(ControlMode.Position, axis * 4096 * 10);
   }
 }
