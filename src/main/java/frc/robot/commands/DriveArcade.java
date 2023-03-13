@@ -19,8 +19,8 @@ public class DriveArcade extends CommandBase {
 
   @Override
   public void execute() {
-    double drive = RobotContainer.driver.getRawAxis(Constants.kLeftStickX); //It's coming in backwards somewhere
-    double steer = RobotContainer.driver.getRawAxis(Constants.kLeftStickY); //TODO: Track down
+    double drive = RobotContainer.driver.getRawAxis(Constants.kLeftStickY);
+    double steer = RobotContainer.driver.getRawAxis(Constants.kLeftStickX);
 
     if(!RobotContainer.driver.getRawButton(Constants.kButtonA)) {
       drive *= Constants.kDriveMultiplier;

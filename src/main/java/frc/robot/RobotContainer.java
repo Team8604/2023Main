@@ -50,8 +50,8 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    operatorAButton.onTrue(new TestPneumatic(true, false));
-    operatorAButton.onFalse(new TestPneumatic(false, false));
+    // operatorAButton.onTrue(new TestPneumatic(true, false));
+    // operatorAButton.onFalse(new TestPneumatic(false, false));
     operatorBButton.onTrue(new TestPneumatic(false, true));
     operatorBButton.onFalse(new TestPneumatic(true, true));
   }
@@ -63,6 +63,6 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return null;
+    return new DriveTime();
   }
 }

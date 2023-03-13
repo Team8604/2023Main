@@ -11,7 +11,7 @@ public class Auto extends SequentialCommandGroup {
   public Auto() {
     addCommands(
       //Grab
-      new TestPneumatic(false, true),
+      new TestPneumatic(false, true)
       //Wait
       //Move arm
       //retract
