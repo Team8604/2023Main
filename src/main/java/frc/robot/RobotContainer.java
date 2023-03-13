@@ -28,15 +28,15 @@ public class RobotContainer {
   public static Compressor compressor = new Compressor(Constants.kPCM, PneumaticsModuleType.CTREPCM);
 
   public static Joystick driver = new Joystick(0);
-  // public static Joystick operator = new Joystick(1);
+  public static Joystick operator = new Joystick(1);
 
-  // public static JoystickButton operatorAButton = new JoystickButton(operator, Constants.kButtonA);
-  // public static JoystickButton operatorBButton = new JoystickButton(operator, Constants.kButtonB);
+  public static JoystickButton operatorAButton = new JoystickButton(operator, Constants.kButtonA);
+  public static JoystickButton operatorBButton = new JoystickButton(operator, Constants.kButtonB);
   public static JoystickButton driverXButton = new JoystickButton(driver, Constants.kButtonX);
   public static JoystickButton driverYButton = new JoystickButton(driver, Constants.kButtonY);
 
   public RobotContainer() {
-    compressor.disable();
+    compressor.enableDigital();
 
     drivetrain.setDefaultCommand(new DriveArcade());
 
@@ -52,8 +52,8 @@ public class RobotContainer {
   private void configureButtonBindings() {
     // operatorAButton.onTrue(new TestPneumatic(true, false));
     // operatorAButton.onFalse(new TestPneumatic(false, false));
-    // operatorBButton.onTrue(new TestPneumatic(false, true));
-    // operatorBButton.onFalse(new TestPneumatic(true, true));
+    operatorBButton.onTrue(new TestPneumatic(false, true));
+    operatorBButton.onFalse(new TestPneumatic(true, true));
   }
 
   /**
