@@ -65,11 +65,11 @@ public class RobotContainer {
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
     return new SequentialCommandGroup(
-      new ArmPID(60000),
+      new ArmPID(Constants.kAutoArmPos),
       new Pneumatic(false),
       new ParallelCommandGroup(
         new ArmPID(0),
-        new DriveTime(4, 0.5, 0)
+        new DriveTime(Constants.kAutoDriveTime, Constants.kAutoDrivePower, 0)
       ),
       new Pneumatic(true)
     );
