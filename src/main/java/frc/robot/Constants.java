@@ -70,4 +70,8 @@ public final class Constants {
     public static final double kArmI = 0;
     public static final double kArmD = 0;
     public static final double kArmF = 0;
+
+    //Uncategorized
+    public static final double MinArmPos = 0;
+    public static final double MaxArmTicks = 140000;
 }

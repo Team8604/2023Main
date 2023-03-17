@@ -59,7 +59,16 @@ public class Arm extends SubsystemBase {
     double axis = RobotContainer.operator.getRawAxis(Constants.kLeftStickY);
     // double axis = 0;
     if(axis < 0.1 && axis > -0.1) axis = 0;
-    armMotor1.set(ControlMode.PercentOutput, axis * axis * Math.signum(axis) * Constants.kArmMultiplier);
-    SmartDashboard.putNumber("Arm Position (Ticks)", armMotor1.getSelectedSensorPosition());
+    double armPos = armMotor1.getSelectedSensorPosition();
+    double armPower = axis * axis * Math.signum(axis) * Constants.kArmMultiplier;
+    if(armPos < Constants.MinArmPos && armPower < 0) {
+      armPower = 0;
+    }
+    if(armPos > Constants.MaxArmTicks && armPower > 0) {
+      armPower = 0;
+    }
+    armMotor1.set(ControlMode.PercentOutput, armPower);
+    SmartDashboard.putNumber("Arm Position (Ticks)", armPos);
+    SmartDashboard.putNumber("Arm Power (%)", armPower * 100);
   }
 }
