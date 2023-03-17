@@ -9,8 +9,6 @@ import com.ctre.phoenix.motorcontrol.TalonFXFeedbackDevice;
 import com.ctre.phoenix.motorcontrol.TalonFXInvertType;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
@@ -18,13 +16,10 @@ import frc.robot.RobotContainer;
 
 public class Arm extends SubsystemBase {
 
-  public DoubleSolenoid solenoid;
   public WPI_TalonFX armMotor1;
   public WPI_TalonFX armMotor2;
 
-  public Arm() {
-    solenoid = new DoubleSolenoid(Constants.kPCM, PneumaticsModuleType.CTREPCM, Constants.kElevatorForward, Constants.kElevatorReverse);
-  
+  public Arm() { 
     armMotor1 = new WPI_TalonFX(Constants.kArm1);
     armMotor1.configStatorCurrentLimit(Constants.kCurrentLimitConfig);
     armMotor1.setNeutralMode(NeutralMode.Brake);
