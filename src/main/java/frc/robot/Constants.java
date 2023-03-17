@@ -87,6 +87,6 @@ public final class Constants {
 
     //Auto settings
     public static final double kAutoArmPos = kArmMidCone;
-    public static final double kAutoDrivePower = 0.7;
+    public static final double kAutoDrivePower = 0.4;
     public static final double kAutoDriveTime = 4;
 }
