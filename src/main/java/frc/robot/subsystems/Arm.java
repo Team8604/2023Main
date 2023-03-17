@@ -68,8 +68,8 @@ public class Arm extends SubsystemBase {
     if(armPos > Constants.MaxArmTicks && armPower > 0) {
       armPower = 0;
     }
-    // armMotor1.set(ControlMode.PercentOutput, armPower);
     SmartDashboard.putNumber("Arm Position (Ticks)", armPos);
     SmartDashboard.putNumber("Arm Power (%)", armPower * 100);
+    // armMotor1.set(ControlMode.PercentOutput, axis * axis * Math.signum(axis) * Constants.kArmMultiplier);
   }
 }
