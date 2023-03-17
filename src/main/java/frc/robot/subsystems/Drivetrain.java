@@ -22,6 +22,9 @@ public class Drivetrain extends SubsystemBase {
   private MotorControllerGroup rightMotors;
   private DifferentialDrive differentialDrive;
 
+  public boolean fastMode;
+  public boolean slowMode;
+
   public Drivetrain() {
     // Init Left Leader
     leftLeader  = new WPI_VictorSPX(Constants.kLeftLeader);

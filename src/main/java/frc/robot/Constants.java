@@ -54,6 +54,10 @@ public final class Constants {
     // Control multipliers
     public static final double kDriveMultiplier = 0.7;
     public static final double kSteerMultiplier = 0.7;
+    public static final double kDriveFastMultiplier = 1.0;
+    public static final double kSteerFastMultiplier = 1.0;
+    public static final double kDriveSlowMultiplier = 0.5;
+    public static final double kSteerSlowMultiplier = 0.5;
     public static final double kArmMultiplier = .4;
     public static final double kArmMaxPowerPID = .2;
     public static final double kDrivetrainCounterSteer = 0.2798;

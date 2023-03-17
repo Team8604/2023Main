@@ -32,10 +32,15 @@ public class RobotContainer {
   public static Joystick driver = new Joystick(0);
   public static Joystick operator = new Joystick(1);
 
-  public static JoystickButton operatorAButton = new JoystickButton(operator, Constants.kButtonA);
-  public static JoystickButton operatorBButton = new JoystickButton(operator, Constants.kButtonB);
+  public static JoystickButton driverAButton = new JoystickButton(driver, Constants.kButtonA);
+  public static JoystickButton driverBButton = new JoystickButton(driver, Constants.kButtonB);
   public static JoystickButton driverXButton = new JoystickButton(driver, Constants.kButtonX);
   public static JoystickButton driverYButton = new JoystickButton(driver, Constants.kButtonY);
+
+  public static JoystickButton operatorAButton = new JoystickButton(operator, Constants.kButtonA);
+  public static JoystickButton operatorBButton = new JoystickButton(operator, Constants.kButtonB);
+  public static JoystickButton operatorXButton = new JoystickButton(operator, Constants.kButtonX);
+  public static JoystickButton operatorYButton = new JoystickButton(operator, Constants.kButtonY);
 
   public RobotContainer() {
     compressor.enableDigital();
@@ -53,7 +58,12 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    operatorAButton.onTrue(new Pneumatic(false));
+    driverAButton.onTrue (new DriveSlowMode(true));
+    driverAButton.onFalse(new DriveSlowMode(false));
+    driverBButton.onTrue (new DriveFastMode(true));
+    driverBButton.onFalse(new DriveFastMode(false));
+
+    operatorAButton.onTrue (new Pneumatic(false));
     operatorAButton.onFalse(new Pneumatic(true));
   }
 

@@ -23,9 +23,20 @@ public class DriveArcade extends CommandBase {
     double drive = RobotContainer.driver.getRawAxis(Constants.kLeftStickY);
     double steer = RobotContainer.driver.getRawAxis(Constants.kLeftStickX);
 
-    if(!RobotContainer.driver.getRawButton(Constants.kButtonA)) {
+    // == is boolean xnor. We want to go regular speed when neither fast or slow mode
+    // is enabled, or when both (they cancel)
+    if(RobotContainer.drivetrain.fastMode == RobotContainer.drivetrain.slowMode) {
       drive *= Constants.kDriveMultiplier;
       steer *= Constants.kSteerMultiplier;
+    } else if(RobotContainer.drivetrain.fastMode) {
+      // if we got here, fast and slow must have differing values, ergo fast is enabled
+      // and slow is not
+      drive *= Constants.kDriveFastMultiplier;
+      steer *= Constants.kSteerFastMultiplier;
+    } else {
+      // same logic as above, slow mode
+      drive *= Constants.kDriveSlowMultiplier;
+      steer *= Constants.kSteerSlowMultiplier;
     }
 
     SmartDashboard.putNumber("Adjusted drive", drive);
