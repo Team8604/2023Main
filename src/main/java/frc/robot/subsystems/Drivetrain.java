@@ -4,6 +4,7 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -24,15 +25,19 @@ public class Drivetrain extends SubsystemBase {
   public Drivetrain() {
     // Init Left Leader
     leftLeader  = new WPI_VictorSPX(Constants.kLeftLeader);
+    leftLeader.setNeutralMode(NeutralMode.Brake);
 
     // Init Right Leader
     rightLeader  = new WPI_VictorSPX(Constants.kRightLeader);
+    rightLeader.setNeutralMode(NeutralMode.Brake);
 
     // Init left follower
     leftFollower  = new WPI_VictorSPX(Constants.kLeftFollower);
+    leftFollower.setNeutralMode(NeutralMode.Brake);
 
     // Init right follower
     rightFollower  = new WPI_VictorSPX(Constants.kRightFollower);
+    rightFollower.setNeutralMode(NeutralMode.Brake);
 
     leftMotors = new MotorControllerGroup(leftLeader, leftFollower);
     rightMotors = new MotorControllerGroup(rightLeader, rightFollower);
