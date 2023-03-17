@@ -77,4 +77,5 @@ public final class Constants {
     //Uncategorized
     public static final double MinArmPos = 0;
     public static final double MaxArmTicks = 140000;
+    public static final double kDrivetrainCounterSteer = 0.2798;
 }

@@ -46,7 +46,9 @@ public class Drivetrain extends SubsystemBase {
   }
 
   public void set(double forward, double steer) {
-    differentialDrive.arcadeDrive(steer, forward);
+    double counterSteer = forward * Constants.kDrivetrainCounterSteer;
+
+    differentialDrive.arcadeDrive(steer + counterSteer, forward);
   }
 
   @Override
