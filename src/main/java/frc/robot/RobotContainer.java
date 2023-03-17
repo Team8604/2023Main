@@ -10,6 +10,8 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.subsystems.*;
 import frc.robot.commands.*;
@@ -51,8 +53,8 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    operatorAButton.onTrue(new Pneumatic(true));
-    operatorAButton.onFalse(new Pneumatic(false));
+    operatorAButton.onTrue(new Pneumatic(false));
+    operatorAButton.onFalse(new Pneumatic(true));
   }
 
   /**
@@ -62,6 +64,14 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return new ArmPID(0);
+    return new SequentialCommandGroup(
+      new ArmPID(60000),
+      new Pneumatic(false),
+      new ParallelCommandGroup(
+        new ArmPID(0),
+        new DriveTime(4, 0.5, 0)
+      ),
+      new Pneumatic(true)
+    );
   }
 }

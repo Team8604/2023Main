@@ -17,6 +17,7 @@ public class Grabber extends SubsystemBase {
 
   public Grabber() {
     solenoid = new DoubleSolenoid(Constants.kPCM, PneumaticsModuleType.CTREPCM, Constants.kGrabberForward, Constants.kGrabberReverse);
+    set(true);
   }
 
   public void set(boolean open) {

@@ -10,11 +10,20 @@ import frc.robot.RobotContainer;
 
 public class DriveTime extends CommandBase {
   private Timer timer;
+
+  private double duration;
+  private double drive;
+  private double steer;
+
   /** Creates a new DriveTime. */
-  public DriveTime() {
-    addRequirements(RobotContainer.drivetrain, RobotContainer.arm, RobotContainer.grabber);
+  public DriveTime(double duration, double drive, double steer) {
+    addRequirements(RobotContainer.drivetrain);
     timer = new Timer();
     timer.start();  
+
+    this.duration = duration;
+    this.drive = drive;
+    this.steer = steer;
   }
 
   // Called when the command is initially scheduled.
@@ -25,19 +34,7 @@ public class DriveTime extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if(timer.hasElapsed(4)) {
-      RobotContainer.drivetrain.set(.5, 0);
-      return;
-    }
-    if(timer.hasElapsed(1.5)) {
-      RobotContainer.drivetrain.set(-0.4, 0);
-      return;
-    }
-    if(timer.hasElapsed(.5)) {
-      RobotContainer.drivetrain.set(.5, 0);
-      return;
-    }
-    RobotContainer.drivetrain.set(-.75, 0);
+    RobotContainer.drivetrain.set(drive, steer);
   }
 
   // Called once the command ends or is interrupted.
@@ -49,6 +46,6 @@ public class DriveTime extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return timer.hasElapsed(8);
+    return timer.hasElapsed(duration);
   }
 }
