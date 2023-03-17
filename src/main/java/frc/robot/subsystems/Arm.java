@@ -15,6 +15,7 @@ import frc.robot.Constants;
 import frc.robot.RobotContainer;
 
 public class Arm extends SubsystemBase {
+  public boolean unlockedMode;
 
   public WPI_TalonFX armMotor1;
   public WPI_TalonFX armMotor2;

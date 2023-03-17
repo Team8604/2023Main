@@ -65,6 +65,10 @@ public class RobotContainer {
 
     operatorAButton.onTrue (new Pneumatic(false));
     operatorAButton.onFalse(new Pneumatic(true));
+    operatorYButton.onTrue (new ArmUnlockedMode(true));
+    operatorYButton.onFalse(new ArmUnlockedMode(false));
+    operatorBButton.onTrue(new ArmPID(Constants.kArmRetracted));
+
   }
 
   /**
@@ -78,7 +82,7 @@ public class RobotContainer {
       new ArmPID(Constants.kAutoArmPos),
       new Pneumatic(false),
       new ParallelCommandGroup(
-        new ArmPID(0),
+        new ArmPID(Constants.kArmRetracted),
         new DriveTime(Constants.kAutoDriveTime, Constants.kAutoDrivePower, 0)
       ),
       new Pneumatic(true)

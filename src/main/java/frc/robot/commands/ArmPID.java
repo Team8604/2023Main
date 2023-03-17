@@ -41,6 +41,11 @@ public class ArmPID extends CommandBase {
 
   @Override
   public boolean isFinished() {
+    // Emergency interrupt
+    // TODO: Make a command so the binding is more obvious?
+    if(RobotContainer.operator.getRawButton(Constants.kButtonX)) {
+      return true;
+    }
     return correctTicks > Constants.kArmCorrectTicksRequired;
   }
 }

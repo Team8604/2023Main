@@ -81,6 +81,7 @@ public final class Constants {
 
     //Arm positions
     public static final double kArmMinPOs = 0;
+    public static final double kArmRetracted = 1000;
     public static final double kArmMidCone = 60000;
     public static final double kArmMaxPos = 140000;
 

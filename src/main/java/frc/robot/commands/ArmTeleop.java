@@ -25,11 +25,13 @@ public class ArmTeleop extends CommandBase {
     if(axis < 0.1 && axis > -0.1) axis = 0;
     double armPos = RobotContainer.arm.armMotor1.getSelectedSensorPosition();
     double armPower = axis * axis * Math.signum(axis) * Constants.kArmMultiplier;
-    if(armPos < Constants.kArmMinPOs && armPower < 0) {
-      armPower = 0;
-    }
-    if(armPos > Constants.kArmMaxPos && armPower > 0) {
-      armPower = 0;
+    if(!RobotContainer.arm.unlockedMode) {
+      if(armPos < Constants.kArmMinPOs && armPower < 0) {
+        armPower = 0;
+      }
+      if(armPos > Constants.kArmMaxPos && armPower > 0) {
+        armPower = 0;
+      }
     }
     SmartDashboard.putNumber("Arm Power (%)", armPower * 100);
     RobotContainer.arm.armMotor1.set(ControlMode.PercentOutput, axis * axis * Math.signum(axis) * Constants.kArmMultiplier);
