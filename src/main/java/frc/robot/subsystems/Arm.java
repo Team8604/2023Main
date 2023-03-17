@@ -4,7 +4,6 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.TalonFXFeedbackDevice;
 import com.ctre.phoenix.motorcontrol.TalonFXInvertType;
@@ -12,7 +11,6 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
-import edu.wpi.first.wpilibj.motorcontrol.Talon;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
@@ -51,25 +49,7 @@ public class Arm extends SubsystemBase {
 
   @Override
   public void periodic() {
-    // The arm controls itself as a single unit and 
-    // commands simply set the target
-    // This is done to reduce the change of a controls 
-    // miscommunication causing the robot to damage itself 
-
-
-    double axis = RobotContainer.operator.getRawAxis(Constants.kLeftStickY);
-    // double axis = 0;
-    if(axis < 0.1 && axis > -0.1) axis = 0;
-    double armPos = armMotor1.getSelectedSensorPosition();
-    double armPower = axis * axis * Math.signum(axis) * Constants.kArmMultiplier;
-    if(armPos < Constants.MinArmPos && armPower < 0) {
-      armPower = 0;
-    }
-    if(armPos > Constants.MaxArmTicks && armPower > 0) {
-      armPower = 0;
-    }
+    double armPos = RobotContainer.arm.armMotor1.getSelectedSensorPosition();
     SmartDashboard.putNumber("Arm Position (Ticks)", armPos);
-    SmartDashboard.putNumber("Arm Power (%)", armPower * 100);
-    // armMotor1.set(ControlMode.PercentOutput, axis * axis * Math.signum(axis) * Constants.kArmMultiplier);
   }
 }

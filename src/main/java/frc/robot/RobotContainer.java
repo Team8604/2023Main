@@ -39,6 +39,7 @@ public class RobotContainer {
     compressor.enableDigital();
 
     drivetrain.setDefaultCommand(new DriveArcade());
+    arm.setDefaultCommand(new ArmTeleop());
 
     configureButtonBindings();
   }
