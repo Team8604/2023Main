@@ -80,14 +80,16 @@ public class RobotContainer {
     // An ExampleCommand will run in autonomous
     return new SequentialCommandGroup(
       new ArmPID(Constants.kAutoArmPos),
-      new Delay(3),
+      new Delay(Constants.kAutoPrereleaseTime),
       new Pneumatic(false),
-      new Delay(1),
+      new Delay(Constants.kAutoPostreleaseTime),
       new ParallelCommandGroup(
-        new ArmPID(Constants.kArmRetracted),
+        new SequentialCommandGroup(
+          new ArmPID(Constants.kArmRetracted),
+          new Pneumatic(true)
+        ),
         new DriveTime(Constants.kAutoDriveTime, Constants.kAutoDrivePower, 0)
-      ),
-      new Pneumatic(true)
+      )
     );
   }
 }
