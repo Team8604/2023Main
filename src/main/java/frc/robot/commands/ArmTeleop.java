@@ -4,8 +4,6 @@
 
 package frc.robot.commands;
 
-import com.ctre.phoenix.motorcontrol.ControlMode;
-
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
@@ -34,7 +32,7 @@ public class ArmTeleop extends CommandBase {
       }
     }
     SmartDashboard.putNumber("Arm Power (%)", armPower * 100);
-    RobotContainer.arm.armMotor1.set(ControlMode.PercentOutput, axis * axis * Math.signum(axis) * Constants.kArmMultiplier);
+    RobotContainer.arm.armMotor1.set(armPower);
   }
 
   @Override
