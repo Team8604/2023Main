@@ -43,6 +43,7 @@ public class Arm extends SubsystemBase {
     armMotor1.config_kP(0, Constants.kArmP, Constants.kTimeoutMs);
     armMotor1.config_kI(0, Constants.kArmI, Constants.kTimeoutMs);
     armMotor1.config_kD(0, Constants.kArmD, Constants.kTimeoutMs);
+    armMotor1.configClosedLoopPeakOutput(0, Constants.kArmMaxPowerPID, Constants.kTimeoutMs);
   }
 
   // 0 is the resting position
@@ -67,7 +68,7 @@ public class Arm extends SubsystemBase {
     if(armPos > Constants.MaxArmTicks && armPower > 0) {
       armPower = 0;
     }
-    armMotor1.set(ControlMode.PercentOutput, armPower);
+    // armMotor1.set(ControlMode.PercentOutput, armPower);
     SmartDashboard.putNumber("Arm Position (Ticks)", armPos);
     SmartDashboard.putNumber("Arm Power (%)", armPower * 100);
   }

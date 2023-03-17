@@ -55,6 +55,7 @@ public final class Constants {
     public static final double kDriveMultiplier = 0.7;
     public static final double kSteerMultiplier = 0.7;
     public static final double kArmMultiplier = .4;
+    public static final double kArmMaxPowerPID = .2;
 
     // Motor limits
     // Values copied from 2021 code
@@ -66,10 +67,12 @@ public final class Constants {
 
     // PID settings
     public static final int kTimeoutMs = 0;
-    public static final double kArmP = 0.5;
+    public static final double kArmP = 0.1;
     public static final double kArmI = 0;
     public static final double kArmD = 0;
     public static final double kArmF = 0;
+    public static final double kArmMaxError = 5000;
+    public static final int kArmCorrectTicksRequired = 10;
 
     //Uncategorized
     public static final double MinArmPos = 0;
