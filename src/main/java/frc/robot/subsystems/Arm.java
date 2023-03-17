@@ -13,6 +13,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.motorcontrol.Talon;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 import frc.robot.RobotContainer;
@@ -59,5 +60,6 @@ public class Arm extends SubsystemBase {
     // double axis = 0;
     if(axis < 0.1 && axis > -0.1) axis = 0;
     armMotor1.set(ControlMode.PercentOutput, axis * axis * Math.signum(axis) * Constants.kArmMultiplier);
+    SmartDashboard.putNumber("Arm Position (Ticks)", armMotor1.getSelectedSensorPosition());
   }
 }

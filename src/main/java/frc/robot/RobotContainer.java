@@ -50,10 +50,10 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    // operatorAButton.onTrue(new TestPneumatic(true, false));
-    // operatorAButton.onFalse(new TestPneumatic(false, false));
-    operatorBButton.onTrue(new TestPneumatic(false, true));
-    operatorBButton.onFalse(new TestPneumatic(true, true));
+    operatorAButton.onTrue(new TestPneumatic(true, false));
+    operatorAButton.onFalse(new TestPneumatic(false, false));
+    // operatorBButton.onTrue(new TestPneumatic(false, true));
+    // operatorBButton.onFalse(new TestPneumatic(true, true));
   }
 
   /**

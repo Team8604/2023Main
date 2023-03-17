@@ -4,6 +4,7 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.RobotContainer;
@@ -26,6 +27,9 @@ public class DriveArcade extends CommandBase {
       drive *= Constants.kDriveMultiplier;
       steer *= Constants.kSteerMultiplier;
     }
+
+    SmartDashboard.putNumber("Adjusted drive", drive);
+    SmartDashboard.putNumber("Adjusted steer", steer);
 
     RobotContainer.drivetrain.set(drive, steer);
   }
