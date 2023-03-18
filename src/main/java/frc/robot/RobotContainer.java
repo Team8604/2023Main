@@ -10,8 +10,6 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
-import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.subsystems.*;
 import frc.robot.commands.*;
@@ -43,6 +41,10 @@ public class RobotContainer {
   public static JoystickButton operatorYButton = new JoystickButton(operator, Constants.kButtonY);
 
   public RobotContainer() {
+    Autos.autoChooser.setDefaultOption("Mid Cone, Mobility", Autos.midConeMove);
+    Autos.autoChooser.addOption("Mid Cone", Autos.midCone);
+    Autos.autoChooser.addOption("None", null);
+
     compressor.enableDigital();
 
     drivetrain.setDefaultCommand(new DriveArcade());
@@ -78,18 +80,6 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return new SequentialCommandGroup(
-      new ArmPID(Constants.kAutoArmPos),
-      new Delay(Constants.kAutoPrereleaseTime),
-      new Pneumatic(false),
-      new Delay(Constants.kAutoPostreleaseTime),
-      new ParallelCommandGroup(
-        new SequentialCommandGroup(
-          new ArmPID(Constants.kArmRetracted),
-          new Pneumatic(true)
-        ),
-        new DriveTime(Constants.kAutoDriveTime, Constants.kAutoDrivePower, 0)
-      )
-    );
+    return Autos.autoChooser.getSelected();
   }
 }
