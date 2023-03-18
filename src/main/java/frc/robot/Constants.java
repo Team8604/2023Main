@@ -60,7 +60,7 @@ public final class Constants {
     public static final double kSteerSlowMultiplier = 0.5;
     public static final double kArmMultiplier = .4;
     public static final double kArmMaxPowerPID = .25;
-    public static final double kDrivetrainCounterSteer = 0.2798;
+    public static final double kDrivetrainCounterSteer = 0;
 
     // Motor limits
     // Values copied from 2021 code
@@ -82,13 +82,13 @@ public final class Constants {
     //Arm positions
     public static final double kArmMinPOs = 0;
     public static final double kArmRetracted = 1000;
-    public static final double kArmMidCone = 60000;
+    public static final double kArmMidCone = 65000;
     public static final double kArmMaxPos = 140000;
 
     //Auto settings
     public static final double kAutoArmPos = kArmMidCone;
     public static final double kAutoPrereleaseTime = 3;
     public static final double kAutoPostreleaseTime = 1;
-    public static final double kAutoDrivePower = 0.5;
-    public static final double kAutoDriveTime = 5;
+    public static final double kAutoDrivePower = 0.7;
+    public static final double kAutoDriveTime = 2.75;
 }

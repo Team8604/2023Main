@@ -67,7 +67,7 @@ public class RobotContainer {
     operatorAButton.onFalse(new Pneumatic(true));
     operatorYButton.onTrue (new ArmUnlockedMode(true));
     operatorYButton.onFalse(new ArmUnlockedMode(false));
-    operatorBButton.onTrue(new ArmPID(Constants.kArmRetracted));
+    operatorBButton.onTrue(new ArmPID(Constants.kArmMidCone));
 
   }
 
