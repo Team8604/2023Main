@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.subsystems.*;
@@ -39,11 +40,15 @@ public class RobotContainer {
   public static JoystickButton operatorBButton = new JoystickButton(operator, Constants.kButtonB);
   public static JoystickButton operatorXButton = new JoystickButton(operator, Constants.kButtonX);
   public static JoystickButton operatorYButton = new JoystickButton(operator, Constants.kButtonY);
+  public static JoystickButton operatorLBumper = new JoystickButton(operator, Constants.kBumperL);
+  public static JoystickButton operatorRBumper = new JoystickButton(operator, Constants.kBumperR);
 
   public RobotContainer() {
     Autos.autoChooser.setDefaultOption("Mid Cone, Mobility", Autos.midConeMove);
     Autos.autoChooser.addOption("Mid Cone", Autos.midCone);
     Autos.autoChooser.addOption("None", null);
+
+    SmartDashboard.putData(Autos.autoChooser);
 
     compressor.enableDigital();
 
@@ -69,8 +74,9 @@ public class RobotContainer {
     operatorAButton.onFalse(new Pneumatic(true));
     operatorYButton.onTrue (new ArmUnlockedMode(true));
     operatorYButton.onFalse(new ArmUnlockedMode(false));
-    operatorBButton.onTrue(new ArmPID(Constants.kArmMidCone));
-
+    operatorRBumper.onTrue(new ArmPID(Constants.kArmMidCone));
+    operatorLBumper.onTrue(new ArmPID(Constants.kArmMidCube));
+    operatorBButton.onTrue(new ArmPID(Constants.kArmRetracted));
   }
 
   /**
