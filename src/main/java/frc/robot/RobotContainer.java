@@ -35,6 +35,8 @@ public class RobotContainer {
   public static JoystickButton driverBButton = new JoystickButton(driver, Constants.kButtonB);
   public static JoystickButton driverXButton = new JoystickButton(driver, Constants.kButtonX);
   public static JoystickButton driverYButton = new JoystickButton(driver, Constants.kButtonY);
+  public static JoystickButton driverLBumper = new JoystickButton(driver, Constants.kBumperL);
+  public static JoystickButton driverRBumper = new JoystickButton(driver, Constants.kBumperR);
 
   public static JoystickButton operatorAButton = new JoystickButton(operator, Constants.kButtonA);
   public static JoystickButton operatorBButton = new JoystickButton(operator, Constants.kButtonB);
@@ -65,10 +67,10 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    driverAButton.onTrue (new DriveSlowMode(true));
-    driverAButton.onFalse(new DriveSlowMode(false));
-    driverBButton.onTrue (new DriveFastMode(true));
-    driverBButton.onFalse(new DriveFastMode(false));
+    driverLBumper.onTrue (new DriveSlowMode(true));
+    driverLBumper.onFalse(new DriveSlowMode(false));
+    driverRBumper.onTrue (new DriveFastMode(true));
+    driverRBumper.onFalse(new DriveFastMode(false));
 
     operatorAButton.onTrue (new Pneumatic(false));
     operatorAButton.onFalse(new Pneumatic(true));
