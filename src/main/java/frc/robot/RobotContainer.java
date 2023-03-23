@@ -44,8 +44,8 @@ public class RobotContainer {
   public static JoystickButton operatorRBumper = new JoystickButton(operator, Constants.kBumperR);
 
   public RobotContainer() {
-    Autos.autoChooser.setDefaultOption("Mid Cone, Mobility", Autos.midConeMove);
-    Autos.autoChooser.addOption("Mid Cone", Autos.midCone);
+    Autos.autoChooser.setDefaultOption("Mid Cone", Autos.midCone);
+    Autos.autoChooser.addOption("Mid Cone, Mobility", Autos.midConeMove);
     Autos.autoChooser.addOption("None", null);
 
     SmartDashboard.putData(Autos.autoChooser);

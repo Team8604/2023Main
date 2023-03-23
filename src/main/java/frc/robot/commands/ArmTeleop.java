@@ -17,11 +17,22 @@ public class ArmTeleop extends CommandBase {
   @Override
   public void initialize() {}
 
+  private double[] motionSmoothing = new double[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+  private int rotatingIndex = 0;
+
   @Override
   public void execute() {
     double axis = RobotContainer.operator.getRawAxis(Constants.kLeftStickY);
     if(axis < 0.1 && axis > -0.1) axis = 0;
     double armPos = RobotContainer.arm.armMotor1.getSelectedSensorPosition();
+    
+    motionSmoothing[rotatingIndex] = axis;
+    axis = 0;
+    for(int i = 0;i < motionSmoothing.length;i ++) {
+      axis += motionSmoothing[i];
+    }
+    axis /= motionSmoothing.length;
+
     double armPower = axis * axis * Math.signum(axis) * Constants.kArmMultiplier;
     if(!RobotContainer.arm.unlockedMode) {
       if(armPos < Constants.kArmMinPOs && armPower < 0) {
@@ -33,6 +44,9 @@ public class ArmTeleop extends CommandBase {
     }
     SmartDashboard.putNumber("Arm Power (%)", armPower * 100);
     RobotContainer.arm.armMotor1.set(armPower);
+
+    rotatingIndex++;
+    if(rotatingIndex >= motionSmoothing.length) rotatingIndex = 0;
   }
 
   @Override
