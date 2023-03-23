@@ -20,7 +20,7 @@ public class DriveArcade extends CommandBase {
 
   @Override
   public void execute() {
-    double drive = RobotContainer.driver.getRawAxis(Constants.kLeftStickY);
+    double drive = RobotContainer.driver.getRawAxis(Constants.kRightStickY);
     double steer = RobotContainer.driver.getRawAxis(Constants.kLeftStickX);
 
     // == is boolean xnor. We want to go regular speed when neither fast or slow mode
