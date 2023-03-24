@@ -31,7 +31,6 @@ public class Autos {
     );
     
     public static final Command midConeBalance = new SequentialCommandGroup(
-        
         new ArmPID(Constants.kAutoArmPos),
         new Delay(Constants.kAutoPrereleaseTime),
         new Pneumatic(false),
@@ -42,7 +41,7 @@ public class Autos {
                 new Pneumatic(true)
             ),
             new DriveTime(Constants.kAutoDriveTime, Constants.kAutoDrivePower, 0)
-        )
+        ),
         new DriveTime(Constants.kAutoDriveTime / 2, -1 * Constants.kAutoDrivePower, 0)
     );
 
