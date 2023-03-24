@@ -48,6 +48,7 @@ public class RobotContainer {
   public RobotContainer() {
     Autos.autoChooser.setDefaultOption("Mid Cone", Autos.midCone);
     Autos.autoChooser.addOption("Mid Cone, Mobility", Autos.midConeMove);
+    Autos.autoChooser.addOption("Mid Cone, Balance", Autos.midConeBalance);
     Autos.autoChooser.addOption("None", null);
 
     SmartDashboard.putData(Autos.autoChooser);
