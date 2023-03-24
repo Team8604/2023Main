@@ -5,7 +5,6 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.Constants;
-import 
 
 public class Autos {
     public static final Command midConeMove = new SequentialCommandGroup(
@@ -32,6 +31,7 @@ public class Autos {
     );
     
     public static final Command midConeBalance = new SequentialCommandGroup(
+        
         new ArmPID(Constants.kAutoArmPos),
         new Delay(Constants.kAutoPrereleaseTime),
         new Pneumatic(false),
@@ -44,6 +44,7 @@ public class Autos {
             new DriveTime(Constants.kAutoDriveTime, Constants.kAutoDrivePower, 0)
         )
         new DriveTime(Constants.kAutoDriveTime / 2, -1 * Constants.kAutoDrivePower, 0)
+    );
 
     public static final SendableChooser<Command> autoChooser = new SendableChooser<>();
 }
