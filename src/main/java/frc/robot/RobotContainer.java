@@ -67,10 +67,10 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    driverLBumper.onTrue (new DriveSlowMode(true));
-    driverLBumper.onFalse(new DriveSlowMode(false));
-    driverRBumper.onTrue (new DriveFastMode(true));
-    driverRBumper.onFalse(new DriveFastMode(false));
+    driverLBumper.onTrue (new DriveFastMode(true));
+    driverLBumper.onFalse(new DriveFastMode(false));
+    driverRBumper.onTrue (new DriveSlowMode(true));
+    driverRBumper.onFalse(new DriveSlowMode(false));
 
     operatorAButton.onTrue (new Pneumatic(false));
     operatorAButton.onFalse(new Pneumatic(true));
