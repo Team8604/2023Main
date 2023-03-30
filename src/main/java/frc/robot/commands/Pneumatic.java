@@ -5,18 +5,25 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.InstantCommand;
+import frc.robot.Robot;
 import frc.robot.RobotContainer;
 
 public class Pneumatic extends InstantCommand {
   private boolean value;
+  private boolean elevator;
 
-  public Pneumatic(boolean value) {
-    addRequirements(RobotContainer.grabber);
+  public Pneumatic(boolean value, boolean elevator) {
+    addRequirements(elevator ? RobotContainer.arm : RobotContainer.grabber);
     this.value = value;
+    this.elevator = elevator;
   }
 
   @Override
   public void initialize() {
-    RobotContainer.grabber.set(value);
+    if(elevator) {
+      RobotContainer.arm.set(value);
+    } else {
+      RobotContainer.grabber.set(value);
+    }
   }
 }

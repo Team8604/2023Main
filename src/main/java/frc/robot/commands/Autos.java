@@ -10,12 +10,12 @@ public class Autos {
     public static final Command midConeMove = new SequentialCommandGroup(
         new ArmPID(Constants.kAutoArmPos),
         new Delay(Constants.kAutoPrereleaseTime),
-        new Pneumatic(false),
+        new Pneumatic(false, false),
         new Delay(Constants.kAutoPostreleaseTime),
         new ParallelCommandGroup(
             new SequentialCommandGroup(
                 new ArmPID(Constants.kArmRetracted),
-                new Pneumatic(true)
+                new Pneumatic(true, false)
             ),
             new DriveTime(Constants.kAutoDriveTime, Constants.kAutoDrivePower, 0)
         )
@@ -24,10 +24,10 @@ public class Autos {
     public static final Command midCone = new SequentialCommandGroup(
         new ArmPID(Constants.kAutoArmPos),
         new Delay(Constants.kAutoPrereleaseTime),
-        new Pneumatic(false),
+        new Pneumatic(false, false),
         new Delay(Constants.kAutoPostreleaseTime),
         new ArmPID(Constants.kArmRetracted),
-        new Pneumatic(true)
+        new Pneumatic(true, false)
     );
 
     public static final SendableChooser<Command> autoChooser = new SendableChooser<>();

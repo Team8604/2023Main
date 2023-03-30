@@ -72,10 +72,12 @@ public class RobotContainer {
     driverRBumper.onTrue (new DriveSlowMode(true));
     driverRBumper.onFalse(new DriveSlowMode(false));
 
-    operatorAButton.onTrue (new Pneumatic(false));
-    operatorAButton.onFalse(new Pneumatic(true));
-    operatorYButton.onTrue (new ArmUnlockedMode(true));
-    operatorYButton.onFalse(new ArmUnlockedMode(false));
+    operatorAButton.onTrue (new Pneumatic(false, false));
+    operatorAButton.onFalse(new Pneumatic(true , false));
+    operatorYButton.onTrue (new Pneumatic(false, true));
+    operatorYButton.onFalse(new Pneumatic(true , true));
+    // operatorYButton.onTrue (new ArmUnlockedMode(true));
+    // operatorYButton.onFalse(new ArmUnlockedMode(false));
     operatorRBumper.onTrue(new ArmPID(Constants.kArmMidCone));
     operatorLBumper.onTrue(new ArmPID(Constants.kArmMidCube));
     operatorBButton.onTrue(new ArmPID(Constants.kArmRetracted));
