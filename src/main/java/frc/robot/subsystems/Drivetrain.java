@@ -7,8 +7,10 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -21,6 +23,7 @@ public class Drivetrain extends SubsystemBase {
   private MotorControllerGroup leftMotors;
   private MotorControllerGroup rightMotors;
   private DifferentialDrive differentialDrive;
+  public ADXRS450_Gyro gyro;
 
   public boolean fastMode;
   public boolean slowMode;
@@ -46,6 +49,10 @@ public class Drivetrain extends SubsystemBase {
     rightMotors = new MotorControllerGroup(rightLeader, rightFollower);
 
     differentialDrive = new DifferentialDrive(leftMotors, rightMotors);
+
+    gyro = new ADXRS450_Gyro();
+    gyro.calibrate();
+    gyro.reset();
   }
 
   public void set(double forward, double steer) {
@@ -55,7 +62,5 @@ public class Drivetrain extends SubsystemBase {
   }
 
   @Override
-  public void periodic() {
-    
-  }
+  public void periodic() {}
 }
