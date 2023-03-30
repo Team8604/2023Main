@@ -84,7 +84,7 @@ public final class Constants {
     public static final double kArmRetracted = 10000;
     public static final double kArmMidCone = 80000;
     public static final double kArmMidCube = 90000;
-    public static final double kArmMaxPos = 145000;
+    public static final double kArmMaxPos = 140000;
 
     //Auto settings
     public static final double kAutoArmPos = 75000;

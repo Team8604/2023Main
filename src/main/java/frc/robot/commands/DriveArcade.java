@@ -65,6 +65,9 @@ public class DriveArcade extends CommandBase {
     if(drive < 0.1 && drive > -0.1) {
       steerAdjust = 0;
     }
+    if(steer > 0.1 || steer < -0.1) {
+      steerAdjust = 0;
+    }
   }
 
   @Override
