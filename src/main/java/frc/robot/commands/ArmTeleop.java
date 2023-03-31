@@ -33,7 +33,14 @@ public class ArmTeleop extends CommandBase {
     }
     axis /= motionSmoothing.length;
 
-    double armPower = axis * axis * Math.signum(axis) * Constants.kArmMultiplier;
+    double currentMultiplier;
+    if(armPos < Constants.kArmSlowZone) {
+      currentMultiplier = Constants.kArmMultiplier;
+    } else {
+      currentMultiplier = Constants.kArmSlowMultipler;
+    }
+
+    double armPower = axis * axis * Math.signum(axis) * currentMultiplier;
     if(!RobotContainer.arm.unlockedMode) {
       if(armPos < Constants.kArmMinPOs && armPower < 0) {
         armPower = 0;
