@@ -3,7 +3,8 @@ package frc.robot.utils;
 import edu.wpi.first.wpilibj.BuiltInAccelerometer;
 
 // Code taken from https://github.com/FRC3683/OpenAutoBalance/blob/main/java/autoBalance.java
-// with minor modifications
+// with minor modifications:
+// 1) removed score and balance functionality
 public class OpenAutoBalance {
     private BuiltInAccelerometer mRioAccel;
     private int state;
@@ -13,9 +14,6 @@ public class OpenAutoBalance {
     private double onChargeStationDegree;
     private double levelDegree;
     private double debounceTime;
-    private double singleTapTime;
-    private double scoringBackUpTime;
-    private double doubleTapTime;
 
     public OpenAutoBalance() {
         mRioAccel = new BuiltInAccelerometer();
@@ -46,19 +44,6 @@ public class OpenAutoBalance {
         // Reduces the impact of sensor noice, but too high can make the auto run
         // slower, default = 0.2
         debounceTime = 0.2;
-
-        // Amount of time to drive towards to scoring target when trying to bump the
-        // game piece off
-        // Time it takes to go from starting position to hit the scoring target
-        singleTapTime = 0.4;
-
-        // Amount of time to drive away from knocked over gamepiece before the second
-        // tap
-        scoringBackUpTime = 0.2;
-
-        // Amount of time to drive forward to secure the scoring of the gamepiece
-        doubleTapTime = 0.3;
-
     }
 
     public double getPitch() {
@@ -129,67 +114,6 @@ public class OpenAutoBalance {
                     return -0.1;
                 }
             case 3:
-                return 0;
-        }
-        return 0;
-    }
-
-    // Same as auto balance above, but starts auto period by scoring
-    // a game piece on the back bumper of the robot
-    public double scoreAndBalance() {
-        switch (state) {
-            // drive back, then forwards, then back again to knock off and score game piece
-            case 0:
-                debounceCount++;
-                if (debounceCount < secondsToTicks(singleTapTime)) {
-                    return -robotSpeedFast;
-                } else if (debounceCount < secondsToTicks(singleTapTime + scoringBackUpTime)) {
-                    return robotSpeedFast;
-                } else if (debounceCount < secondsToTicks(singleTapTime + scoringBackUpTime + doubleTapTime)) {
-                    return -robotSpeedFast;
-                } else {
-                    debounceCount = 0;
-                    state = 1;
-                    return 0;
-                }
-                // drive forwards until on charge station
-            case 1:
-                if (getTilt() > onChargeStationDegree) {
-                    debounceCount++;
-                }
-                if (debounceCount > secondsToTicks(debounceTime)) {
-                    state = 2;
-                    debounceCount = 0;
-                    return robotSpeedSlow;
-                }
-                return robotSpeedFast;
-            // driving up charge station, drive slower, stopping when level
-            case 2:
-                if (getTilt() < levelDegree) {
-                    debounceCount++;
-                }
-                if (debounceCount > secondsToTicks(debounceTime)) {
-                    state = 3;
-                    debounceCount = 0;
-                    return 0;
-                }
-                return robotSpeedSlow;
-            // on charge station, ensure robot is flat, then end auto
-            case 3:
-                if (Math.abs(getTilt()) <= levelDegree / 2) {
-                    debounceCount++;
-                }
-                if (debounceCount > secondsToTicks(debounceTime)) {
-                    state = 4;
-                    debounceCount = 0;
-                    return 0;
-                }
-                if (getTilt() >= levelDegree) {
-                    return robotSpeedSlow / 2;
-                } else if (getTilt() <= -levelDegree) {
-                    return -robotSpeedSlow / 2;
-                }
-            case 4:
                 return 0;
         }
         return 0;
