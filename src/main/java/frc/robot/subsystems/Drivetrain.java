@@ -60,6 +60,10 @@ public class Drivetrain extends SubsystemBase {
     differentialDrive.arcadeDrive(steer + counterSteer, forward);
   }
 
+  public void setRaw(double forward, double steer) {
+    differentialDrive.arcadeDrive(steer, forward, false);
+  }
+
   @Override
   public void periodic() {}
 }
