@@ -48,6 +48,7 @@ public class RobotContainer {
   public RobotContainer() {
     Autos.autoChooser.setDefaultOption("Mid Cone", Autos.midCone);
     Autos.autoChooser.addOption("Mid Cone, Mobility", Autos.midConeMove);
+    Autos.autoChooser.addOption("Mid Cone, Balance", Autos.midConeBalance);
     Autos.autoChooser.addOption("None", null);
 
     SmartDashboard.putData(Autos.autoChooser);
@@ -82,6 +83,8 @@ public class RobotContainer {
     operatorLBumper.onTrue(new ArmPID(Constants.kArmMidCube));
     operatorBButton.onTrue(new ArmPID(Constants.kArmRetracted));
   }
+
+  
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.

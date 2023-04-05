@@ -30,5 +30,19 @@ public class Autos {
         new Pneumatic(true, false)
     );
 
+    public static final Command midConeBalance = new SequentialCommandGroup(
+        new ArmPID(Constants.kAutoArmPos),
+        new Delay(Constants.kAutoPrereleaseTime),
+        new Pneumatic(false, false),
+        new Delay(Constants.kAutoPostreleaseTime),
+        new ParallelCommandGroup(
+            new SequentialCommandGroup(
+                new ArmPID(Constants.kArmRetracted),
+                new Pneumatic(true, false)
+            ),
+            new AutoBalanceCommand()
+        )
+    );
+
     public static final SendableChooser<Command> autoChooser = new SendableChooser<>();
 }
