@@ -4,8 +4,10 @@ import edu.wpi.first.wpilibj.BuiltInAccelerometer;
 import frc.robot.Constants;
 
 // Code taken from https://github.com/FRC3683/OpenAutoBalance/blob/main/java/autoBalance.java
+// https://www.chiefdelphi.com/t/psa-balance-in-auto/429778
 // with minor modifications:
 // 1) removed score and balance functionality
+// 2) moved configuration to Constants.java
 public class OpenAutoBalance {
     private BuiltInAccelerometer mRioAccel;
     private int state;
