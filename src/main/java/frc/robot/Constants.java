@@ -94,4 +94,26 @@ public final class Constants {
     public static final double kAutoPostreleaseTime = 1;
     public static final double kAutoDrivePower = 0.7;
     public static final double kAutoDriveTime = 2.75;
+
+    //Auto balance settings
+
+    // Speed the robot drives while balancing itself on the charge station.
+    // Should be roughly half the fast speed, to make the robot more accurate
+    public static final double kAutoBalanceRobotSpeedSlow = 0.2;
+
+    // Speed the robot drived while scoring/approaching station
+    public static final double kAutoBalanceRobotSpeedFast = 0.4;
+
+    // Angle where the robot knows it is on the charge station
+    public static final double kAutoBalanceOnChargeStationDegree = 13;
+
+    // Angle where the robot can assume it is level on the charging station
+    // Used for exiting the drive forward sequence as well as for auto balancing,
+    public static final double kAutoBalanceLevelDegree = 6.0;
+
+    // Amount of time a sensor condition needs to be met before changing states in
+    // seconds
+    // Reduces the impact of sensor noice, but too high can make the auto run
+    // slower
+    public static final double kAutoBalanceDebounceTime = 0.2;
 }
