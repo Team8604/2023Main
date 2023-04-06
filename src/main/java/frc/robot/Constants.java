@@ -94,6 +94,7 @@ public final class Constants {
     public static final double kAutoPostreleaseTime = 1;
     public static final double kAutoDrivePower = 0.7;
     public static final double kAutoDriveTime = 2.75;
+    public static final double kStraightDriveP = 0.1;
 
     //Auto balance settings
 
