@@ -20,6 +20,20 @@ public class Autos {
             new DriveTime(Constants.kAutoDriveTime, Constants.kAutoDrivePower, 0)
         )
     );
+
+    public static final Command midConeMoveLong = new SequentialCommandGroup(
+        new ArmPID(Constants.kAutoArmPos),
+        new Delay(Constants.kAutoPrereleaseTime),
+        new Pneumatic(false, false),
+        new Delay(Constants.kAutoPostreleaseTime),
+        new ParallelCommandGroup(
+            new SequentialCommandGroup(
+                new ArmPID(Constants.kArmRetracted),
+                new Pneumatic(true, false)
+            ),
+            new DriveTime(Constants.kAutoDriveTimeLong, Constants.kAutoDrivePower, 0)
+        )
+    );
     
     public static final Command midCone = new SequentialCommandGroup(
         new ArmPID(Constants.kAutoArmPos),
@@ -31,10 +45,10 @@ public class Autos {
     );
 
     public static final Command midConeBalance = new SequentialCommandGroup(
-        new ArmPID(Constants.kAutoArmPos),
-        new Delay(Constants.kAutoPrereleaseTime),
-        new Pneumatic(false, false),
-        new Delay(Constants.kAutoPostreleaseTime),
+        // new ArmPID(Constants.kAutoArmPos),
+        // new Delay(Constants.kAutoPrereleaseTime),
+        // new Pneumatic(false, false),
+        // new Delay(Constants.kAutoPostreleaseTime),
         new ParallelCommandGroup(
             new SequentialCommandGroup(
                 new ArmPID(Constants.kArmRetracted),

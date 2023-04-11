@@ -48,6 +48,7 @@ public class RobotContainer {
   public RobotContainer() {
     Autos.autoChooser.setDefaultOption("Mid Cone", Autos.midCone);
     Autos.autoChooser.addOption("Mid Cone, Mobility", Autos.midConeMove);
+    Autos.autoChooser.addOption("Mid Cone, Mobility Long", Autos.midConeMoveLong);
     Autos.autoChooser.addOption("Mid Cone, Balance", Autos.midConeBalance);
     Autos.autoChooser.addOption("None", null);
 
@@ -75,13 +76,14 @@ public class RobotContainer {
 
     operatorAButton.onTrue (new Pneumatic(false, false));
     operatorAButton.onFalse(new Pneumatic(true , false));
-    operatorYButton.onTrue (new Pneumatic(false, true));
-    operatorYButton.onFalse(new Pneumatic(true , true));
+    // operatorYButton.onTrue (new Pneumatic(false, true));
+    // operatorYButton.onFalse(new Pneumatic(true , true));
     // operatorYButton.onTrue (new ArmUnlockedMode(true));
     // operatorYButton.onFalse(new ArmUnlockedMode(false));
+    operatorBButton.onTrue(new ArmPID(Constants.kArmMaxPos));
     operatorRBumper.onTrue(new ArmPID(Constants.kArmMidCone));
     operatorLBumper.onTrue(new ArmPID(Constants.kArmMidCube));
-    operatorBButton.onTrue(new ArmPID(Constants.kArmRetracted));
+    operatorYButton.onTrue(new ArmPID(Constants.kArmRetracted));
   }
 
   

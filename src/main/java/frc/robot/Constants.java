@@ -73,7 +73,7 @@ public final class Constants {
 
     // PID settings
     public static final int kTimeoutMs = 0;
-    public static final double kArmP = 0.1;
+    public static final double kArmP = 0.025;
     public static final double kArmI = 0;
     public static final double kArmD = 0;
     public static final double kArmF = 0;
@@ -82,39 +82,39 @@ public final class Constants {
 
     //Arm positions
     public static final double kArmMinPOs = 5000;
-    public static final double kArmRetracted = 10000;
-    public static final double kArmMidCone = 80000;
-    public static final double kArmMidCube = 90000;
+    public static final double kArmRetracted = 0;
+    public static final double kArmMidCone = 60600;
+    public static final double kArmMidCube = 75000;
     public static final double kArmSlowZone = 110000;
-    public static final double kArmMaxPos = 140000;
+    public static final double kArmMaxPos = 135000;
 
     //Auto settings
     public static final double kAutoArmPos = 75000;
     public static final double kAutoPrereleaseTime = 3;
     public static final double kAutoPostreleaseTime = 1;
     public static final double kAutoDrivePower = 0.7;
-    public static final double kAutoDriveTime = 2.75;
-    public static final double kStraightDriveP = 0.1;
+    public static final double kAutoDriveTime = 2.5;
+    public static final double kAutoDriveTimeLong = 2.75;
 
     //Auto balance settings
 
     // Speed the robot drives while balancing itself on the charge station.
     // Should be roughly half the fast speed, to make the robot more accurate
-    public static final double kAutoBalanceRobotSpeedSlow = 0.2;
+    public static final double kAutoBalanceRobotSpeedSlow = 0.3;
 
     // Speed the robot drived while scoring/approaching station
-    public static final double kAutoBalanceRobotSpeedFast = 0.4;
+    public static final double kAutoBalanceRobotSpeedFast = 0.5;
 
     // Angle where the robot knows it is on the charge station
     public static final double kAutoBalanceOnChargeStationDegree = 13;
 
     // Angle where the robot can assume it is level on the charging station
     // Used for exiting the drive forward sequence as well as for auto balancing,
-    public static final double kAutoBalanceLevelDegree = 6.0;
+    public static final double kAutoBalanceLevelDegree = 3.0;
 
     // Amount of time a sensor condition needs to be met before changing states in
     // seconds
     // Reduces the impact of sensor noice, but too high can make the auto run
     // slower
-    public static final double kAutoBalanceDebounceTime = 0.2;
+    public static final double kAutoBalanceDebounceTime = 0.4;
 }

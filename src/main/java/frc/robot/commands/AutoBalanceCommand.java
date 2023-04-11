@@ -5,35 +5,42 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Constants;
 import frc.robot.RobotContainer;
 import frc.robot.utils.OpenAutoBalance;
 
 public class AutoBalanceCommand extends CommandBase {
 
   private OpenAutoBalance autoBalance;
-  private double startingGyroAngle;
 
   public AutoBalanceCommand() {
     addRequirements(RobotContainer.drivetrain);
-
-    autoBalance = new OpenAutoBalance();
   }
 
   @Override
   public void initialize() {
-    startingGyroAngle = RobotContainer.drivetrain.gyro.getAngle();
+    autoBalance = new OpenAutoBalance();
+    steerAdjust = 0;
   }
+
+  private double steerAdjust;
 
   @Override
   public void execute() {
-    double speed =  autoBalance.autoBalanceRoutine();
+    double drive =  autoBalance.autoBalanceRoutine();
 
-    double currentGyroAngle = RobotContainer.drivetrain.gyro.getAngle();
-    double steer = currentGyroAngle - startingGyroAngle;
-    steer *= Constants.kStraightDriveP;
+    double drift = RobotContainer.drivetrain.gyro.getRate();
+    
+    steerAdjust += drift * 0.005 * drive;
+  
+    double steer = 0;
 
-    RobotContainer.drivetrain.setRaw(speed, 0);
+    if(drive > 0) {
+      steer -= steerAdjust;
+    } else {
+      steer += steerAdjust;
+    }
+
+    RobotContainer.drivetrain.setRaw(drive, steer);
   }
 
   @Override

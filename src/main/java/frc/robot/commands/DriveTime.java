@@ -30,12 +30,28 @@ public class DriveTime extends CommandBase {
   @Override
   public void initialize() {
     timer.restart();
+    steerAdjust = 0;
   }
+
+  private double steerAdjust = 0;
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    RobotContainer.drivetrain.set(drive, steer);
+    if(steer == 0){ 
+      double drift = RobotContainer.drivetrain.gyro.getRate();
+    
+      steerAdjust += drift * 0.005 * drive;
+  
+      if(drive > 0) {
+        steer -= steerAdjust;
+      } else {
+        steer += steerAdjust;
+      }
+  
+    } else {
+      RobotContainer.drivetrain.set(drive, steer);
+    }
   }
 
   // Called once the command ends or is interrupted.
